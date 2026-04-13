@@ -1,5 +1,40 @@
-<!-- Chat interface — à implémenter en M2 -->
-<main>
-  <h1>🤖 Assist</h1>
-  <p>Interface chat à venir (M2)</p>
+<main class="container">
+  <h1>🤖 Assist — M1 Test</h1>
+
+  <!-- GET /health -->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>GET /health</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-spinner *ngIf="_healthLoading()" diameter="24" />
+      <p *ngIf="_healthError()" class="error">{{ _healthError() }}</p>
+      <div *ngIf="_health() as h">
+        <mat-chip-set>
+          <mat-chip [class]="h.status === 'ok' ? 'chip-ok' : 'chip-degraded'">
+            {{ h.status }}
+          </mat-chip>
+        </mat-chip-set>
+        <pre>{{ h | json }}</pre>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="callHealth()">Appeler</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <!-- GET /config -->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>GET /config</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-spinner *ngIf="_configLoading()" diameter="24" />
+      <p *ngIf="_configError()" class="error">{{ _configError() }}</p>
+      <pre *ngIf="_config()">{{ _config() | json }}</pre>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="callConfig()">Appeler</button>
+    </mat-card-actions>
+  </mat-card>
 </main>
