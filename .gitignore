@@ -1,0 +1,20 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Backend Gradle
+backend/.gradle/
+backend/build/
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Spec (ne pas versionner les specs binaires si pas nécessaire)
+# spec/
