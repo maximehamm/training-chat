@@ -14,38 +14,38 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class AssistConfigService {
 
-    private final AssistConfigRepository configRepository;
-    private final ClaudeConfig claudeConfig;
+  private final AssistConfigRepository configRepository;
+  private final ClaudeConfig claudeConfig;
 
-    @PostConstruct
-    public void init() {
-        if (!configRepository.existsById(1L)) {
-            configRepository.save(new AssistConfig(
-                claudeConfig.getDefaultModel(),
-                claudeConfig.getDefaultMaxTokens(),
-                claudeConfig.getDefaultTemperature()
-            ));
-        }
+  @PostConstruct
+  public void init() {
+    if (!configRepository.existsById(1L)) {
+      configRepository.save(
+          new AssistConfig(
+              claudeConfig.getDefaultModel(),
+              claudeConfig.getDefaultMaxTokens(),
+              claudeConfig.getDefaultTemperature()));
     }
+  }
 
-    @Transactional(readOnly = true)
-    public ConfigResponse getConfig() {
-        AssistConfig config = configRepository.findById(1L).orElseThrow();
-        return new ConfigResponse(config.getModel(), config.getMaxTokens(), config.getTemperature());
-    }
+  @Transactional(readOnly = true)
+  public ConfigResponse getConfig() {
+    AssistConfig config = configRepository.findById(1L).orElseThrow();
+    return new ConfigResponse(config.getModel(), config.getMaxTokens(), config.getTemperature());
+  }
 
-    @Transactional
-    public ConfigResponse updateConfig(ConfigRequest request) {
-        AssistConfig config = configRepository.findById(1L).orElseThrow();
-        if (request.model() != null) {
-            config.setModel(request.model());
-        }
-        if (request.maxTokens() != null) {
-            config.setMaxTokens(request.maxTokens());
-        }
-        if (request.temperature() != null) {
-            config.setTemperature(request.temperature());
-        }
-        return new ConfigResponse(config.getModel(), config.getMaxTokens(), config.getTemperature());
+  @Transactional
+  public ConfigResponse updateConfig(ConfigRequest request) {
+    AssistConfig config = configRepository.findById(1L).orElseThrow();
+    if (request.model() != null) {
+      config.setModel(request.model());
     }
+    if (request.maxTokens() != null) {
+      config.setMaxTokens(request.maxTokens());
+    }
+    if (request.temperature() != null) {
+      config.setTemperature(request.temperature());
+    }
+    return new ConfigResponse(config.getModel(), config.getMaxTokens(), config.getTemperature());
+  }
 }

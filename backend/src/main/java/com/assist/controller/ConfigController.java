@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ConfigController {
 
-    private final AssistConfigService configService;
+  private final AssistConfigService configService;
 
-    @GetMapping
-    public ConfigResponse getConfig() {
-        return configService.getConfig();
-    }
+  @GetMapping
+  public ConfigResponse getConfig() {
+    return configService.getConfig();
+  }
 
-    @PostMapping
-    public ConfigResponse updateConfig(@Valid @RequestBody ConfigRequest request) {
-        return configService.updateConfig(request);
-    }
+  @PostMapping
+  public ConfigResponse updateConfig(@Valid @RequestBody ConfigRequest request) {
+    return configService.updateConfig(request);
+  }
 }

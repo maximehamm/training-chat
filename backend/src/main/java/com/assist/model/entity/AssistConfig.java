@@ -15,21 +15,20 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AssistConfig {
 
-    @Id
-    private Long id = 1L;
+  @Id private Long id = 1L;
 
-    @Column(nullable = false)
-    private String model;
+  @Column(nullable = false)
+  private String model;
 
-    @Column(nullable = false)
-    private Integer maxTokens;
+  @Column(nullable = false)
+  private Integer maxTokens;
 
-    @Column(nullable = false)
-    private Double temperature;
+  @Column(nullable = false)
+  private Double temperature;
 
-    public AssistConfig(String model, Integer maxTokens, Double temperature) {
-        this.model = model;
-        this.maxTokens = maxTokens;
-        this.temperature = temperature;
-    }
+  public AssistConfig(String model, Integer maxTokens, Double temperature) {
+    this.model = model;
+    this.maxTokens = maxTokens;
+    this.temperature = temperature;
+  }
 }

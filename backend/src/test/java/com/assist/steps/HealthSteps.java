@@ -7,11 +7,11 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 @RequiredArgsConstructor
 public class HealthSteps {
 
-    private final TestRestTemplate restTemplate;
-    private final HttpContext httpContext;
+  private final TestRestTemplate restTemplate;
+  private final HttpContext httpContext;
 
-    @When("je GET /health")
-    public void jeGetHealth() {
-        httpContext.setLastResponse(restTemplate.getForEntity("/health", String.class));
-    }
+  @When("^je GET /health$")
+  public void jeGetHealth() {
+    httpContext.setLastResponse(restTemplate.getForEntity("/health", String.class));
+  }
 }

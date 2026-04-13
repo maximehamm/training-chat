@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class HealthController {
 
-    private final ClaudeConfig claudeConfig;
+  private final ClaudeConfig claudeConfig;
 
-    @Value("${assist.version:1.0.0}")
-    private String version;
+  @Value("${assist.version:1.0.0}")
+  private String version;
 
-    private final long startTime = System.currentTimeMillis();
+  private final long startTime = System.currentTimeMillis();
 
-    @GetMapping("/health")
-    public HealthResponse health() {
-        long uptime = (System.currentTimeMillis() - startTime) / 1000;
-        if (!claudeConfig.isApiKeyPresent()) {
-            return new HealthResponse("degraded", version, uptime, "missing_api_key");
-        }
-        return new HealthResponse("ok", version, uptime);
+  @GetMapping("/health")
+  public HealthResponse health() {
+    long uptime = (System.currentTimeMillis() - startTime) / 1000;
+    if (!claudeConfig.isApiKeyPresent()) {
+      return new HealthResponse("degraded", version, uptime, "missing_api_key");
     }
+    return new HealthResponse("ok", version, uptime);
+  }
 }

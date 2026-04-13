@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 @ScenarioScope
 public class HttpContext {
 
-    private ResponseEntity<String> lastResponse;
+  private ResponseEntity<String> lastResponse;
 
-    public void setLastResponse(ResponseEntity<String> lastResponse) {
-        this.lastResponse = lastResponse;
-    }
+  public void setLastResponse(ResponseEntity<String> lastResponse) {
+    this.lastResponse = lastResponse;
+  }
 
-    public ResponseEntity<String> getLastResponse() {
-        return lastResponse;
-    }
+  public ResponseEntity<String> getLastResponse() {
+    return lastResponse;
+  }
 }
