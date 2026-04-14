@@ -283,6 +283,41 @@ TEST_COMMAND=./gradlew test
 }
 ```
 
+## Méthodologie SDD (Spec-Driven Development)
+
+Tout nouveau développement suit un workflow en 7 étapes **obligatoires**, enforced par les hooks et les commandes Claude Code.
+
+### Principe
+
+Déclarer la spec avant de coder — jamais l'inverse.
+La spec (`specs/`) est la source de vérité ; le code en est la traduction.
+
+### Workflow
+
+| Étape | Commande | Livrable | Gate |
+|-------|----------|----------|------|
+| 1 — Extraire la spec | `/sdd-1-start <module>` | `specs/<module>.md` | Validation humaine |
+| 2 — Élaborer le PDT | `/sdd-2-pdt <module>` | `specs/<module>-pdt.md` | Validation humaine |
+| 3 — Mapper la couverture | `/sdd-3-coverage <module>` | PDT colonne Couverture remplie | Validation humaine |
+| 4 — Écrire les scénarios | `/sdd-4-feature <module>` | `features/<module>.feature` | Validation humaine |
+| 5 — Affiner (questions) | `/sdd-5-implement <module>` | Questions d'ambiguïté levées | Réponses humaines |
+| 6 — Implémenter | _(suite de l'étape 5)_ | Code + tests verts | `./gradlew test` vert |
+| 7 — Revoir | `/sdd-6-review <module>` | Rapport de revue | Validation humaine |
+
+### Tableau de bord
+
+```bash
+/sdd-status   # État SDD de tous les modules
+```
+
+### Règle absolue
+
+Un commit touchant un `@Controller` ou `@Service` est bloqué si :
+- `specs/<module>.md` n'existe pas
+- `features/<module>.feature` n'existe pas
+
+---
+
 ## Commits
 
 Format Conventional Commits :

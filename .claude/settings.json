@@ -6,6 +6,11 @@
         "hooks": [
           {
             "type": "command",
+            "command": "bash /home/pp6649/IdeaProjects/training/training_chat/.claude/hooks/sdd-check.sh",
+            "if": "Bash(git commit*)"
+          },
+          {
+            "type": "command",
             "command": "bash /home/pp6649/IdeaProjects/training/training_chat/.claude/hooks/test-before-commit.sh",
             "if": "Bash(git commit*)"
           }
