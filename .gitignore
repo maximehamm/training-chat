@@ -3,10 +3,18 @@
 !.idea/runConfigurations/
 *.iml
 
-# Backend Gradle
+# Gradle
+.gradle/
+build/
 backend/.gradle/
 backend/build/
 backend/.env
+mcp/.gradle/
+mcp/build/
+
+# Logs
+logs/
+mcp/logs/
 
 # Frontend
 frontend/node_modules/

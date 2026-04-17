@@ -3,7 +3,7 @@
     <option name="CUCUMBER_CORE_VERSION" value="7" />
     <option name="FILE_PATH" value="src/test/resources/features" />
     <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-    <module name="assist-backend.test" />
+    <module name="backend.test" />
     <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
     <shortenClasspath name="NONE" />
     <option name="SUGGESTED_NAME" value="Feature: m1-config" />
